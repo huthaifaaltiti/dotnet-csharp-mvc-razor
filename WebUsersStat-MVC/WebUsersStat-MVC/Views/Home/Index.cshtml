@@ -1,0 +1,65 @@
+﻿@model WebUsersStat_MVC.Models.User
+
+<div class="container">
+    <h2>Users Information Dashboard</h2>
+
+    <form method="post" class="form-inline">
+        <div class="form-group">
+            <label for="NationalNumber">National ID:</label>
+            <input type="text" name="NationalNumber" id="NationalNumber" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Find User</button>
+    </form>
+
+    @if (Model != null)
+    {
+        <div class="mt-5">
+
+       
+        <h3 >User Details</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td><strong>Username</strong></td>
+                <td>@Model.Username</td>
+            </tr>
+            <tr>
+                <td><strong>National Number</strong></td>
+                <td>@Model.NationalNumber</td>
+            </tr>
+            <tr>
+                <td><strong>User Salary Status</strong></td>
+                    <td>
+                        @if (Model.UserSalaryStatus == "RED")
+                        {
+                            <span class="text-danger">Low</span>
+                        }
+                        else if (Model.UserSalaryStatus == "GREEN")
+                        {
+                            <span class="text-success">Original</span>
+                        }
+                        else if (Model.UserSalaryStatus == "ORANGE")
+                        {
+                            <span class="text-warning">Good</span>
+                        }
+                        else
+                        {
+                            @Model.UserSalaryStatus 
+                        }
+                    </td>
+            </tr>
+            <tr>
+                <td><strong>User Avg Salary</strong></td>
+                <td>@Model.AvgSalary</td>
+            </tr>
+            <tr>
+                <td><strong>User Active Status</strong></td>
+                <td>@Model.IsActiveStatus</td>
+            </tr>
+        </table>
+        </div>
+    }
+</div>
